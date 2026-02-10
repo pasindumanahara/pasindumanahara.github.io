@@ -72,7 +72,14 @@
             margin-bottom: 10px;
             color: var(--accent-green);
         }
-
+        .cmd-line-typewriter {
+            overflow: hidden; 
+            white-space: nowrap; 
+            border-right: .15em solid var(--accent-green); 
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end forward;
+            max-width: fit-content;
+        }
+        
         .typewriter {
             overflow: hidden; 
             white-space: nowrap; 
@@ -236,8 +243,9 @@
 
     <header class="hero">
         <div class="avatar">👨‍💻</div> <div class="terminal-window">
-            <span class="cmd-line">> initializing_portfolio.exe...</span>
-            <h1 class="typewriter">> Hello World! I build systems.</h1>
+            <!--Change the cmd-line class-->
+            <span class="cmd-line-typewriter">> initializing portfolio.exe...</span>
+            <h1 class="typewriter">> Hello World!</h1>
             <p style="margin-top: 10px; color: var(--text-muted);">CS Student @ University • Full Stack Developer</p>
             <button class="btn-cta" onclick="window.scrollTo(0, 500)">View Changelog</button>
         </div>
@@ -312,3 +320,4 @@
 
 </body>
 </html>
+

@@ -218,17 +218,22 @@
         </div>
 
         <div class="footer">
-            git commit -m "updates for Feb 2026 \n peace ✌︎︎" 
+            git commit -m "updates for <span id="last-update"></span> \n peace ✌︎︎" 
         </div>
 
     </div>
 
     <script>
+        // small snippet to get the last update, last part setting the format
+        document.getElementById('last-update').innerHTML = new Date(document.lastModified).toLocaleDateString('en-US', {month: 'short',year: 'numeric'});
+        
         const linkedin = "www.linkedin.com/in/pasindu-manahara-1554502b3";
-        // Easter Egg: Console logging for recruiters checking dev tools
+        
+        // If u here check console
         console.log("%c Hello there! 👋", "color: #00FF41; font-size: 20px; font-weight: bold;");
         console.log("If you are looking at this, we should talk code.");
         console.log(linkedin);
+        
     </script>
 
 </body>

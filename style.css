@@ -1,5 +1,6 @@
 /* --- CSS VARIABLES & RESET --- */
 /* #98C379 #00FF41 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 :root {
     --bg-color: #1E1E1E;
     --card-bg: #252526;
@@ -9,8 +10,8 @@
     --accent-orange: #FFB000;
     --accent-purple: #BB86FC;
     --border-color: #333333;
-    --font-mono: 'Fira Code', 'Courier New', monospace;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 * {

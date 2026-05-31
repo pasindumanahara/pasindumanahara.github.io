@@ -2,309 +2,1174 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Pasindu Manahara</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="./src/user.png">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7KDPRSVSG"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pasindu-Manahara.dev | Portfolio</title>
 
-        gtag('config', 'G-Z7KDPRSVSG');
-    </script>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg-soft: #0b1628;
+            --bg-card: rgba(15, 23, 42, 0.52);
+            --bg-card-strong: rgba(2, 6, 23, 0.72);
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --faint: #64748b;
+            --line: rgba(148, 163, 184, 0.16);
+            --line-strong: rgba(148, 163, 184, 0.28);
+            --cyan: #67e8f9;
+            --cyan-soft: rgba(103, 232, 249, 0.12);
+            --cyan-line: #67e8f952;
+            --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            --radius-lg: 28px;
+            --radius-md: 18px;
+            --max-width: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Inter", system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            background:
+                radial-gradient(circle at 50% -20%, rgba(34, 211, 238, 0.14), transparent 34rem),
+                radial-gradient(circle at 100% 100%, rgba(37, 99, 235, 0.16), transparent 30rem),
+                #07111f;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            border: none;
+            background: none;
+            color: inherit;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mono {
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+            background: rgba(7, 17, 31, 0.82);
+            backdrop-filter: blur(18px);
+        }
+
+        .mobile-header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--cyan);
+        }
+
+        .logo span {
+            color: var(--faint);
+        }
+
+        .menu-btn {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border: 1px solid var(--line-strong);
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.78);
+        }
+
+        .hamburger {
+            width: 18px;
+            height: 12px;
+            position: relative;
+        }
+
+        .hamburger span {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--text);
+            transition: transform 0.25s ease, top 0.25s ease, opacity 0.25s ease;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 5px;
+        }
+
+        .hamburger span:nth-child(3) {
+            top: 10px;
+        }
+
+        .menu-btn.active .hamburger span:nth-child(1) {
+            top: 5px;
+            transform: rotate(45deg);
+        }
+
+        .menu-btn.active .hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn.active .hamburger span:nth-child(3) {
+            top: 5px;
+            transform: rotate(-45deg);
+        }
+
+        .mobile-nav {
+            display: none;
+            border-top: 1px solid rgba(148, 163, 184, 0.14);
+            padding: 12px 20px 18px;
+        }
+
+        .mobile-nav.active {
+            display: grid;
+            gap: 6px;
+        }
+
+        .mobile-nav a {
+            padding: 11px 12px;
+            border-radius: 14px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(15, 23, 42, 0.8);
+            color: var(--cyan);
+        }
+
+        .layout {
+            width: min(var(--max-width), calc(100% - 40px));
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 390px 1fr;
+            gap: 64px;
+        }
+
+        .sidebar {
+            height: 100vh;
+            position: sticky;
+            top: 0;
+            padding: 48px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border: 1px solid rgba(103, 232, 249, 0.22);
+            border-radius: 999px;
+            background: rgba(103, 232, 249, 0.06);
+            color: #bae6fd;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            max-width: 370px;
+            font-size: clamp(42px, 5vw, 58px);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
+            font-weight: 800;
+            color: #f8fafc;
+        }
+
+        .hero-text {
+            max-width: 380px;
+            margin-top: 24px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .side-nav {
+            display: grid;
+            gap: 16px;
+            margin-top: 56px;
+        }
+
+        .side-nav a {
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: var(--faint);
+            transition: color 0.25s ease;
+        }
+
+        .side-nav a::before {
+            content: "";
+            width: 36px;
+            height: 1px;
+            background: rgba(148, 163, 184, 0.32);
+            transition: width 0.25s ease, background 0.25s ease;
+        }
+
+        .side-nav a:hover,
+        .side-nav a.active {
+            color: var(--cyan);
+        }
+
+        .side-nav a:hover::before,
+        .side-nav a.active::before {
+            width: 64px;
+            background: var(--cyan);
+        }
+
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            color: var(--faint);
+        }
+
+        .socials a {
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .socials a:hover {
+            color: var(--cyan);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 56px 0 80px;
+        }
+
+        .mobile-hero {
+            display: none;
+        }
+
+        .section {
+            padding: 90px 0;
+            scroll-margin-top: 90px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .section-number {
+            color: var(--cyan);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+        }
+
+        .section-title {
+            color: #f8fafc;
+            font-size: 25px;
+            letter-spacing: -0.03em;
+        }
+
+        .section-line {
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(to right, rgba(148, 163, 184, 0.35), transparent);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .about-copy {
+            display: grid;
+            gap: 20px;
+            color: var(--muted);
+            line-height: 1.85;
+            font-size: 16px;
+        }
+
+        .config-card,
+        .mini-card,
+        .project-card,
+        .timeline-card,
+        .contact-card {
+            border: 1px solid var(--line);
+            background: var(--bg-card);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .config-card {
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            background: rgba(2, 6, 23, 0.55);
+        }
+
+        .config-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            color: var(--faint);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 12px;
+        }
+
+        .config-lines {
+            display: grid;
+            gap: 14px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 13px;
+        }
+
+        .config-key {
+            color: var(--cyan);
+        }
+
+        .config-value {
+            color: var(--text);
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .mini-card {
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .mini-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan-line);
+            background: rgba(15, 23, 42, 0.78);
+        }
+
+        .mini-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            color: var(--cyan);
+            background: var(--cyan-soft);
+            margin-bottom: 18px;
+        }
+
+        .mini-card h3 {
+            color: #f8fafc;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .mini-card p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .pills {
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pill {
+            padding: 7px 11px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.7);
+            color: #cbd5e1;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            background: radial-gradient(circle at top right, rgba(103, 232, 249, 0.13), transparent 42%),
+                linear-gradient(135deg, rgba(34, 211, 238, 0.08), transparent);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan-line);
+            background: rgba(15, 23, 42, 0.76);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .status {
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(103, 232, 249, 0.1);
+            color: #bae6fd;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .project-type {
+            color: var(--faint);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+        }
+
+        .project-card h3 {
+            color: #f8fafc;
+            font-size: 26px;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            max-width: 680px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .open-link {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 16px;
+            background: rgba(2, 6, 23, 0.68);
+            color: var(--muted);
+            transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .project-card:hover .open-link {
+            color: var(--cyan);
+            border-color: var(--cyan-line);
+            transform: translate(2px, -2px);
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .timeline-card {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 24px;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--cyan-line);
+            background: rgba(15, 23, 42, 0.72);
+        }
+
+        .timeline-year {
+            color: var(--cyan);
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+        }
+
+        .timeline-card h3 {
+            color: #f8fafc;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .timeline-card p {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .contact-card {
+            border-color: rgba(103, 232, 249, 0.22);
+            border-radius: 34px;
+            padding: 42px;
+            background:
+                radial-gradient(circle at top right, rgba(103, 232, 249, 0.12), transparent 38%),
+                linear-gradient(135deg, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.8));
+        }
+
+        .contact-card .section-number {
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .contact-card h2 {
+            max-width: 760px;
+            color: #f8fafc;
+            font-size: clamp(32px, 4vw, 44px);
+            line-height: 1.08;
+            letter-spacing: -0.05em;
+            margin-bottom: 20px;
+        }
+
+        .contact-card p {
+            max-width: 680px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .contact-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 18px;
+            border-radius: 17px;
+            font-weight: 800;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--cyan);
+            color: #04111f;
+        }
+
+        .btn-primary:hover {
+            background: #a5f3fc;
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: var(--text);
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--cyan-line);
+            color: var(--cyan);
+        }
+
+        footer {
+            color: var(--faint);
+            font-size: 14px;
+            padding: 8px 0 30px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2;
+        }
+
+        @media (max-width: 960px) {
+            .mobile-header {
+                display: block;
+            }
+
+            .layout {
+                width: min(100% - 40px, 760px);
+                display: block;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .content {
+                padding-top: 84px;
+            }
+
+            .mobile-hero {
+                display: block;
+                min-height: 72vh;
+                padding-top: 70px;
+            }
+
+            .hero-title {
+                max-width: 720px;
+            }
+
+            .hero-text {
+                max-width: 680px;
+            }
+
+            .about-grid,
+            .signature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .layout {
+                width: min(100% - 28px, 760px);
+            }
+
+            .section {
+                padding: 68px 0;
+            }
+
+            .section-head {
+                gap: 12px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .project-content,
+            .timeline-card {
+                grid-template-columns: 1fr;
+            }
+
+            .open-link {
+                width: 44px;
+                height: 44px;
+            }
+
+            .contact-card {
+                padding: 28px;
+                border-radius: 28px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header class="hero">
-            <div class="avatar"><img src="./src/user.png" alt="User Avatar"></div>
-            <div class="terminal-window">
-                <h1 class="typewriter">> Hello World!</h1>
-                <p>I'm Pasindu Manahara <br> CS Student @ University
-                    of Ruhuna <br> Full Stack Developer • Tech Enthusiast</p>
-                <button class="btn-cta"
-                    onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">Projects</button>
-                <button class="btn-cta"
-                    onclick="document.getElementById('education').scrollIntoView({behavior: 'smooth'})">Education</button>
-                <button class="btn-cta"
-                    onclick="document.getElementById('tech_stack').scrollIntoView({behavior: 'smooth'})">Tech
-                    Stack</button>
-                <button class="btn-cta"
-                    onclick="document.getElementById('tech_stack').scrollIntoView({behavior: 'smooth'})">Contacts</button>
+    <header class="mobile-header">
+        <div class="mobile-header-inner">
+            <a href="#home" class="logo">PASINDU-MANAHARA<span>.DEV</span></a>
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">
+                <span class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#about">About</a>
+            <a href="#stack">Stack</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-            </div>
-        </header>
-
-        <!-- <div class="status-bar">
-            <div class="status-dot"></div>
-            <span class="statusbar-txt">
-                <p><strong>Current Status:</strong> Learning backend implementations with Java Spring Boot</p>
-            </span>
-        </div> -->
-
-        <div class="timeline-grid">
-
+    <main class="layout">
+        <aside class="sidebar">
             <div>
-                <h2 class="timeline-column-title" id="projects">Projects</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-orange)">
+                <a href="#home" class="logo">PASINDU-MANAHARA<span>.DEV</span></a>
+
+                <div style="margin-top: 70px;">
+                    <h1 class="hero-title">Full-Stack Developer</h1>
+                    <p class="hero-text">
+                        I build clean, practical software systems — from recommendation platforms and APIs to algorithm
+                        tools, databases, and security-focused experiments.
+                    </p>
+                </div>
+
+                <nav class="side-nav" id="sideNav">
+                    <a href="#about">01 About</a>
+                    <a href="#stack">02 Stack</a>
+                    <a href="#projects">03 Projects</a>
+                    <a href="#experience">04 Experience</a>
+                    <a href="#contact">05 Contact</a>
+                </nav>
+            </div>
+
+            <div class="socials">
+                <a href="https://github.com/pasindumanahara" aria-label="GitHub" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path
+                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 1.8 5.6 2.1 5.6 2.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 8.5c0 4 3 6 6 6a4.8 4.8 0 0 0-1 3.5v4" />
+                        <path d="M9 18c-4.5 2-5-2-7-2" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/pasindu-manahara-1554502b3" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                </a>
+                <a href="mailto:manahara2003@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m3 7 9 6 9-6" />
+                    </svg>
+                </a>
+            </div>
+        </aside>
+
+        <section class="content">
+            <section class="mobile-hero" id="home">
+                <!-- <span class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.9 5.9L20 11l-6.1 2.1L12 21l-1.9-7.9L4 11l6.1-2.1L12 3z"/></svg>
+          Quiet systems. Hidden power.
+        </span> -->
+                <h1 class="hero-title">Full-stack developer.</h1>
+                <p class="hero-text">
+                    I build clean, practical software systems — from recommendation platforms and APIs to algorithm
+                    tools, databases, and security-focused experiments.
+                </p>
+            </section>
+
+            <section class="section reveal" id="about">
+                <div class="section-head">
+                    <span class="section-number">01</span>
+                    <h2 class="section-title">About</h2>
+                    <span class="section-line"></span>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-copy">
+                        <p>
+                            I’m a Computer Science student focused on building software that feels clean on the surface
+                            and strong underneath.
+                            My work sits around full-stack development, backend systems, databases, APIs, and
+                            machine-learning-backed features.
+                        </p>
+                        <p>
+                            I like learning through real builds: authentication flows, recommendation APIs, SQL schemas,
+                            React interfaces, Linux tooling,
+                            Docker setups, C/DSA practice, and cybersecurity labs. The goal is simple — build things
+                            that are useful, understandable,
+                            and technically solid.
+                        </p>
+                    </div>
+
+                    <div class="config-card">
+                        <div class="config-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="4 17 10 11 4 5" />
+                                <line x1="12" y1="19" x2="20" y2="19" />
+                            </svg>
+                            identity.config
                         </div>
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="config-lines">
+                            <p><span class="config-key">role</span>: <span class="config-value">"CS Student +
+                                    Builder"</span></p>
+                            <p><span class="config-key">focus</span>: <span class="config-value">"Backend, Web, ML,
+                                    Security"</span></p>
+                            <p><span class="config-key">style</span>: <span class="config-value">"Minimal, practical,
+                                    powerful"</span></p>
+                            <p><span class="config-key">mode</span>: <span class="config-value">"Learning by
+                                    shipping"</span></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal" id="stack">
+                <div class="section-head">
+                    <span class="section-number">02</span>
+                    <h2 class="section-title">Stack & Direction</h2>
+                    <span class="section-line"></span>
+                </div>
+
+                <div class="signature-grid">
+                    <div class="mini-card">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            </svg></div>
+                        <h3>Full-stack</h3>
+                        <p>Frontend polish with backend logic.</p>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                <path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5" />
+                                <path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3" />
+                            </svg></div>
+                        <h3>Data-minded</h3>
+                        <p>APIs, SQL, auth, and model serving.</p>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg></div>
+                        <h3>Security-aware</h3>
+                        <p>Learning systems like someone who breaks and rebuilds them.</p>
+                    </div>
+                    <div class="mini-card">
+                        <div class="mini-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="4" y="4" width="16" height="16" rx="2" />
+                                <rect x="9" y="9" width="6" height="6" />
+                                <path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
+                            </svg></div>
+                        <h3>Systems curious</h3>
+                        <p>Linux, Docker, C, algorithms, and performance thinking.</p>
+                    </div>
+                </div>
+
+                <div class="pills">
+                    <span class="pill">JavaScript</span>
+                    <span class="pill">React</span>
+
+                    <span class="pill">Python</span>
+                    <span class="pill">Django</span>
+                    <span class="pill">PyTorch</span>
+
+                    <span class="pill">Java</span>
+                    <span class="pill">Spring-Boot</span>
+
+                    <span class="pill">PHP</span>
+                    <span class="pill">MySQL</span>
+
+                    <span class="pill">Docker</span>
+                    <span class="pill">WSL/Linux</span>
+                </div>
+            </section>
+
+            <section class="section reveal" id="projects">
+                <div class="section-head">
+                    <span class="section-number">03</span>
+                    <h2 class="section-title">Selected Projects</h2>
+                    <span class="section-line"></span>
+                </div>
+
+                <div class="project-list">
+                    <article class="project-card">
+                        <div class="project-content">
+                            <div>
+                                <div class="project-meta">
+                                    <span class="status">Built</span>
+                                    <span class="project-type">Full-stack recommendation system</span>
+                                </div>
                                 <h3>CineVault</h3>
-                                <span class="date">May 2026</span>
+                                <p>A Django-based movie discovery platform with authentication, watchlists, ratings,
+                                    activity tracking,
+                                    OMDb poster enrichment, and a PyTorch-powered recommendation API.</p>
+                                <div class="pills">
+                                    <span class="pill">Django</span>
+                                    <span class="pill">Python</span>
+                                    <span class="pill">PyTorch</span>
+                                    <span class="pill">MySQL</span>
+                                    <span class="pill">APIs</span>
+                                </div>
                             </div>
-                            <p>Full-stack movie recommendation web application built for learning Django, backend APIs,
-                                authentication, database handling, and ML-powered recommendations through MovieLens
-                                data, PyTorch, and OMDb poster enrichment
-                            </p>
-                            <div class="tag-container">
-                                <span class="tag purple">HTML</span>
-                                <span class="tag purple">Vanila-CSS</span>
-                                <span class="tag purple">JS</span>
-                                <span class="tag purple">Python - Django</span>
-                                <span class="tag purple">PyTorch</span>
-                                <span class="tag orange"><a
-                                        href="https://www.linkedin.com/posts/pasindu-manahara-1554502b3_django-python-machinelearning-ugcPost-7464573756859031554-NJsO/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEtZtdEBIa_-IRnnrxaW4vKgvTjCvJXm5RM"
-                                        class="hover-link" target="_blank">LinkedIn</a></span>
-                            </div>
+                            <a target="_blank"
+                                href="https://www.linkedin.com/posts/pasindu-manahara-1554502b3_django-python-machinelearning-ugcPost-7464573756859031554-NJsO/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEtZtdEBIa_-IRnnrxaW4vKgvTjCvJXm5RM"
+                                class="open-link" aria-label="Open CineVault">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17 17 7" />
+                                    <path d="M7 7h10v10" />
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-                    <!-- TODO :: COMMENTED FOR NOW -->
-                    <!-- content add from here -->
-                    <!-- <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-orange)">
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>MediCare (Upcoming..)</h3>
-                                <span class="date">###</span>
-                            </div>
-                            <p>A comprehensive healthcare platform managing patient records, staff scheduling, and
-                                billing cycles, developed following strict IEEE documentation standards.</p>
-                            <div class="tag-container">
-                                <span class="tag purple">Spring Boot</span>
-                                <span class="tag purple">Vanila-CSS</span>
-                                <span class="tag purple">JS</span>
-                                <span class="tag purple">MySql</span>
-                                <span class="tag orange"><a href="" class="hover-link" target="">GitHub</a></span>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- reuse -->
-                    <!-- ------ -->
-                    <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-orange)">
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>DSA Support</h3>
-                                <span class="date">Mar 2026</span>
-                            </div>
-                            <p>Interactive Data Structures & Algorithms Visualizer built for learning DSA concepts step
-                                by step through animations,
-                                visual states, and readable execution logs.</p>
-                            <div class="tag-container">
-                                <span class="tag purple">HTML</span>
-                                <span class="tag purple">Vanila-CSS</span>
-                                <span class="tag purple">JS</span>
-                                <span class="tag orange"><a href="https://github.com/pasindumanahara/DSASupport"
-                                        class="hover-link" target="_blank">GitHub</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ------ -->
-                    <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-orange)">
-                            <!-- <img src="./src/project_icon_1.png" alt="API Icon"> -->
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>CineRuh</h3>
-                                <span class="date">Jan 2026</span>
-                            </div>
-                            <p>Designed and developed platform to keep track on personal movie lists.</p>
-                            <div class="tag-container">
-                                <span class="tag purple">React.js</span>
-                                <span class="tag purple">Tailwind-CSS</span>
-                                <span class="tag purple">PHP</span>
-                                <span class="tag purple">MySql</span>
-                                <span class="tag orange"><a href="https://github.com/pasindumanahara/CineRUH"
-                                        class="hover-link" target="_blank">GitHub</a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- reuse end -->
-                    <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-orange)">
-                            <!-- <img src="./src/project_icon_2.png" alt="Code Icon"> -->
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Portfolio Website</h3>
-                                <span class="date">Dec 2025</span>
-                            </div>
-                            <p>Built a responsive portfolio using standard HTML/CSS and deployed via Vercel.</p>
-                            <div class="tag-container">
-                                <span class="tag purple">HTML</span>
-                                <span class="tag purple">CSS</span>
-                                <span class="tag orange"><a href="https://github.com/pasindumanahara/Portfolio"
-                                        class="hover-link" target="_blank">GitHub</a></span>
-                            </div>
-                        </div>
-                    </div>
+                    </article>
 
+                    <article class="project-card">
+                        <div class="project-content">
+                            <div>
+                                <div class="project-meta">
+                                    <span class="status">Built</span>
+                                    <span class="project-type">Learning tool</span>
+                                </div>
+                                <h3>DSA Visualizer</h3>
+                                <p>Interactive data structures and algorithms visualizer designed for step-by-step
+                                    learning through animations, visual states, and readable execution logs.</p>
+                                <div class="pills">
+                                    <span class="pill">JavaScript</span>
+                                    <span class="pill">Algorithms</span>
+                                    <span class="pill">Visualization</span>
+                                    <span class="pill">Education</span>
+                                </div>
+                            </div>
+                            <a href="https://github.com/pasindumanahara/DSASupport" target="_blank" class="open-link"
+                                aria-label="Open DSA Visualizer">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17 17 7" />
+                                    <path d="M7 7h10v10" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- <article class="project-card">
+            <div class="project-content">
+              <div>
+                <div class="project-meta">
+                  <span class="status">Learning</span>
+                  <span class="project-type">CTF + Linux workflow</span>
                 </div>
+                <h3>Security Practice Lab</h3>
+                <p>A personal lab setup for practicing command-line fluency, CTF problem solving, Linux tooling, Docker containers, and security fundamentals.</p>
+                <div class="pills">
+                  <span class="pill">Kali</span>
+                  <span class="pill">WSL2</span>
+                  <span class="pill">Docker</span>
+                  <span class="pill">Bash</span>
+                  <span class="pill">CTF</span>
+                </div>
+              </div>
+              <a href="#" class="open-link" aria-label="Open Security Practice Lab">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
             </div>
+          </article> -->
+                </div>
+            </section>
 
-            <div>
-                <h2 class="timeline-column-title" id="education">Education</h2>
+            <section class="section reveal" id="experience">
+                <div class="section-head">
+                    <span class="section-number">04</span>
+                    <h2 class="section-title">Experience</h2>
+                    <span class="section-line"></span>
+                </div>
+
                 <div class="timeline">
-
-                    <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-purple)">
-                            <!-- <img src="" alt="Uni Logo"> -->
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>University of Ruhuna</h3>
-                                <span class="date">2025 - Present</span>
-                            </div>
-                            <p>Undergraduate reading for Computer Science. Focused on DS and Software Engineering.</p>
-                            <div class="tag-container">
-                                <span class="tag purple">Education</span>
+                    <div class="timeline-card">
+                        <div class="timeline-year">Now</div>
+                        <div>
+                            <h3>Computer Science Student</h3>
+                            <p>Building practical software while strengthening algorithms, databases, backend systems,
+                                operating systems, and security fundamentals.</p>
+                            <div class="pills">
+                                <span class="pill">CS</span>
+                                <span class="pill">DSA</span>
+                                <span class="pill">Systems</span>
+                                <span class="pill">Math</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-icon" style="border-color: var(--accent-purple)">
-                            <!-- <img src="./src/work_icon.png" alt="Work Icon"> -->
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>University of Colombo Scool of Computing</h3>
-                                <span class="date">2024 - Present</span>
-                            </div>
-                            <p>Undergraduate reading for BIT.</p>
-                            <div class="tag-container">
-                                <span class="tag purple">Education</span>
+                    <div class="timeline-card">
+                        <div class="timeline-year">Recent</div>
+                        <div>
+                            <h3>Full-stack Project Builder</h3>
+                            <p>Focused on turning ideas into real web apps using Django, PHP/MySQL, React, AJAX, APIs,
+                                authentication flows, and clean UI patterns.</p>
+                            <div class="pills">
+                                <span class="pill">Backend</span>
+                                <span class="pill">Frontend</span>
+                                <span class="pill">Databases</span>
+                                <span class="pill">APIs</span>
                             </div>
                         </div>
                     </div>
 
+                    <div class="timeline-card">
+                        <div class="timeline-year">Next</div>
+                        <div>
+                            <h3>Backend + ML Engineering Direction</h3>
+                            <p>Exploring recommendation systems, ML model serving, security-minded development, and
+                                production-style project structure.</p>
+                            <div class="pills">
+                                <span class="pill">ML</span>
+                                <span class="pill">Security</span>
+                                <span class="pill">Architecture</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-        </div>
-
-        <div class="tech-stack-section">
-            <h2 class="timeline-column-title" id="tech_stack">Tech Stack</h2>
-            <div class="tech-stack-container">
-                <div class="tech-stack-grid">
-                    <!-- TODO :: add python java to this after public some projects
-                    add spring boot to this after finishing ongoing project -->
-                    
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="PHP">
-                        <span>Java</span>
+            <section class="section reveal" id="contact">
+                <div class="contact-card">
+                    <span class="section-number mono">05. Contact</span>
+                    <h2>Let’s build something clean, useful, and technically solid.</h2>
+                    <p>
+                        I’m open to project discussions, internship opportunities, collaborations, and developer
+                        communities around web, backend, ML, and security.
+                    </p>
+                    <div class="contact-actions">
+                        <a href="mailto:manahara2003@gmail.com" class="btn btn-primary">
+                            Say hello
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                <path d="m3 7 9 6 9-6" />
+                            </svg>
+                        </a>
+                        <a target="_blank" href="https://github.com/pasindumanahara" class="btn btn-secondary">
+                            GitHub
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path
+                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 1.8 5.6 2.1 5.6 2.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 8.5c0 4 3 6 6 6a4.8 4.8 0 0 0-1 3.5v4" />
+                                <path d="M9 18c-4.5 2-5-2-7-2" />
+                            </svg>
+                        </a>
                     </div>
-                    
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
-                        <span>PHP</span>
-                    </div>
-
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                            alt="React">
-                        <span>React</span>
-                    </div>
-
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-                            alt="MySql">
-                        <span>MySql</span>
-                    </div>
-
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-                            alt="MySql">
-                        <span>Python</span>
-                    </div>
-
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="GIT">
-                        <span>GIT</span>
-                    </div>
-
-                    <div class="skill-card">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                            alt="Docker">
-                        <span>Docker</span>
-                    </div>                    
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <div class="contact-section" id="contact">
-            <h2 class="timeline-column-title">Contact Me</h2>
-            <div class="contact-grid">
-                <a href="https://wa.me/94743565750" target="_blank" class="contact-card">
-                    <img src="https://cdn.simpleicons.org/whatsapp/whatsapp-original" alt="whatsapp">
-                    <span>WhatsApp</span>
-                </a>
-
-                <a href="https://www.linkedin.com/in/pasindu-manahara-1554502b3" target="_blank" class="contact-card">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
-                        alt="LinkedIn">
-                    <span>LinkedIn</span>
-                </a>
-
-                <a href="mailto:manahara2003@gmail.com" target="_blank" class="contact-card">
-                    <img src="https://cdn.simpleicons.org/gmail/gmail-original" alt="Email">
-                    <span>Email</span>
-                </a>
-
-                <a href="https://github.com/pasindumanahara" target="_blank" class="contact-card">
-                    <img src="https://cdn.simpleicons.org/github/E0E0E0" alt="GitHub">
-                    <span>GitHub</span>
-                </a>
-                
-                <a href="https://leetcode.com/u/HelloWorldpmi/" target="_blank" rel="noopener noreferrer"
-                    class="contact-card" aria-label="LeetCode Profile">
-
-                    <img src="https://cdn.simpleicons.org/leetcode/FFA116" alt="LeetCode">
-                    <span>LeetCode</span>
-                </a>
-
-            </div>
-        </div>
-
-        <div class="footer">
-            git commit -m "updates for <span id="last-update"></span> \n peace ✌︎︎"
-        </div>
-
-    </div>
+            <footer>
+                Built with ❤︎<br> Last updated: <span id="lastUpdated"></span>
+            </footer>
+        </section>
+    </main>
 
     <script>
-        // small snippet to get the last update, last part setting the format
-        document.getElementById('last-update').innerHTML = new Date(document.lastModified).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+        document.getElementById('lastUpdated').innerHTML = new Date(document.lastModified).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileNav = document.getElementById("mobileNav");
+        const mobileLinks = mobileNav.querySelectorAll("a");
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            mobileNav.classList.toggle("active");
+        });
+
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                menuBtn.classList.remove("active");
+                mobileNav.classList.remove("active");
+            });
+        });
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            },
+            { threshold: 0.12 }
+        );
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".side-nav a");
+
+        const sectionObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        navLinks.forEach((link) => {
+                            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+                        });
+                    }
+                });
+            },
+            {
+                rootMargin: "-35% 0px -55% 0px",
+                threshold: 0,
+            }
+        );
+        sections.forEach((section) => sectionObserver.observe(section));
 
         const linkedin = "www.linkedin.com/in/pasindu-manahara-1554502b3";
-
-        // If u here check console
-        console.log("%c Hello there! 👋", "color: #00FF41; font-size: 20px; font-weight: bold;");
-        console.log("If you are looking at this, we should talk code.");
-        console.log(linkedin);
-
+        window.addEventListener("load", () => {
+            console.clear();
+            console.log("%c Hello there! 👋🏻", "color: #67e8f952; font-size: 20px; font-weight: bold;");
+            console.log("If you are looking at this, we should talk code.");
+            console.log(linkedin);
+        });
     </script>
-
 </body>
 
 </html>

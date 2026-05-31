@@ -5,14 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio | Pasindu Manahara</title>
+    <link rel="icon" type="image/png" href="./src/icon.png">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
-
     <style>
         :root {
             --bg: #07111f;
@@ -222,8 +221,10 @@
 
         .hero-title {
             max-width: 370px;
-            font-size: clamp(42px, 5vw, 58px);
-            line-height: 0.98;
+            font-size: clamp(34px, 4vw, 48px);
+            line-height: 1.05;
+            /* font-size: clamp(42px, 5vw, 58px);
+            line-height: 0.98; */
             letter-spacing: -0.055em;
             font-weight: 800;
             color: #f8fafc;
@@ -274,20 +275,70 @@
             background: var(--cyan);
         }
 
+        .sidebar-bottom {
+            display: grid;
+            gap: 12px;
+        }
+
+        .site-footer {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+            line-height: 1.8;
+            color: var(--faint);
+            text-transform: uppercase;
+        }
+
+        .site-footer .heart {
+            color: var(--cyan);
+            font-size: 12px;
+            display: inline-block;
+            transform: translateY(1px);
+        }
+
+        .site-footer .lastUpdated {
+            color: var(--muted);
+        }
+
         .socials {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 14px;
             color: var(--faint);
         }
 
         .socials a {
-            transition: transform 0.2s ease, color 0.2s ease;
+            width: 28px;
+            height: 28px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--faint);
+            opacity: 0.72;
+
+            transition:
+                transform 0.2s ease,
+                color 0.2s ease,
+                opacity 0.2s ease;
         }
 
         .socials a:hover {
             color: var(--cyan);
+            opacity: 1;
             transform: translateY(-2px);
+            /* border-color: var(--cyan-line);
+            background: rgba(103, 232, 249, 0.06); */
+        }
+
+        .socials svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .mobile-footer-block {
+            display: none;
         }
 
         .content {
@@ -644,11 +695,6 @@
             color: var(--cyan);
         }
 
-        footer {
-            color: var(--faint);
-            font-size: 14px;
-            padding: 8px 0 30px;
-        }
 
         .reveal {
             opacity: 0;
@@ -703,6 +749,21 @@
             .signature-grid {
                 grid-template-columns: 1fr;
             }
+
+            .mobile-footer-block {
+                display: grid;
+                gap: 14px;
+                padding: 10px 0 36px;
+                margin-top: -20px;
+            }
+
+            .mobile-footer-block .site-footer {
+                text-align: left;
+            }
+
+            .mobile-footer-block .socials {
+                justify-content: flex-start;
+            }
         }
 
         @media (max-width: 620px) {
@@ -741,6 +802,7 @@
 </head>
 
 <body>
+    <!-- mobile view -->
     <header class="mobile-header">
         <div class="mobile-header-inner">
             <a href="#home" class="logo">PASINDU-MANAHARA<span>.DEV</span></a>
@@ -767,7 +829,7 @@
                 <a href="#home" class="logo">PASINDU-MANAHARA<span>.DEV</span></a>
 
                 <div style="margin-top: 70px;">
-                    <h1 class="hero-title">Full-Stack Developer</h1>
+                    <h1 class="hero-title">CS Student & Full-Stack Dev.</h1>
                     <p class="hero-text">
                         I build clean, practical software systems — from recommendation platforms and APIs to algorithm
                         tools, databases, and security-focused experiments.
@@ -782,28 +844,39 @@
                     <a href="#contact">05 Contact</a>
                 </nav>
             </div>
+            <div class="sidebar-bottom">
+                <footer class="site-footer">
+                    <span>
+                        Built with <span class="heart">❤︎</span><br>
+                        Last updated: <span class="lastUpdated"></span>
+                    </span>
+                </footer>
 
-            <div class="socials">
-                <a href="https://github.com/pasindumanahara" aria-label="GitHub" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path
-                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 1.8 5.6 2.1 5.6 2.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 8.5c0 4 3 6 6 6a4.8 4.8 0 0 0-1 3.5v4" />
-                        <path d="M9 18c-4.5 2-5-2-7-2" />
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/pasindu-manahara-1554502b3" target="_blank" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-                        <rect x="2" y="9" width="4" height="12" />
-                        <circle cx="4" cy="4" r="2" />
-                    </svg>
-                </a>
-                <a href="mailto:manahara2003@gmail.com" aria-label="Email">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <rect x="3" y="5" width="18" height="14" rx="2" />
-                        <path d="m3 7 9 6 9-6" />
-                    </svg>
-                </a>
+                <div class="socials">
+                    <a href="https://github.com/pasindumanahara" aria-label="GitHub" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 1.8 5.6 2.1 5.6 2.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 8.5c0 4 3 6 6 6a4.8 4.8 0 0 0-1 3.5v4" />
+                            <path d="M9 18c-4.5 2-5-2-7-2" />
+                        </svg>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/pasindu-manahara-1554502b3" target="_blank"
+                        aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+
+                    <a href="mailto:manahara2003@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="m3 7 9 6 9-6" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </aside>
 
@@ -813,7 +886,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.9 5.9L20 11l-6.1 2.1L12 21l-1.9-7.9L4 11l6.1-2.1L12 3z"/></svg>
           Quiet systems. Hidden power.
         </span> -->
-                <h1 class="hero-title">Full-stack developer.</h1>
+                <h1 class="hero-title">CS Student & Full-Stack Dev.</h1>
                 <p class="hero-text">
                     I build clean, practical software systems — from recommendation platforms and APIs to algorithm
                     tools, databases, and security-focused experiments.
@@ -1101,15 +1174,50 @@
                 </div>
             </section>
 
-            <footer>
-                Built with ❤︎<br> Last updated: <span id="lastUpdated"></span>
-            </footer>
+            <div class="mobile-footer-block">
+                <footer class="site-footer">
+                    <span>
+                        Built with <span class="heart">❤︎</span><br>
+                        Last updated: <span class="lastUpdated"></span>
+                    </span>
+                </footer>
+
+                <div class="socials">
+                    <a href="https://github.com/pasindumanahara" aria-label="GitHub" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 1.8 5.6 2.1 5.6 2.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 8.5c0 4 3 6 6 6a4.8 4.8 0 0 0-1 3.5v4" />
+                            <path d="M9 18c-4.5 2-5-2-7-2" />
+                        </svg>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/pasindu-manahara-1554502b3" target="_blank"
+                        aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+
+                    <a href="mailto:manahara2003@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="m3 7 9 6 9-6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
     <script>
-        document.getElementById('lastUpdated').innerHTML = new Date(document.lastModified).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-
+        document.querySelectorAll(".lastUpdated").forEach((el) => {
+            el.textContent = new Date(document.lastModified).toLocaleDateString("en-US", {
+                month: "short",
+                year: "numeric"
+            });
+        });
         const menuBtn = document.getElementById("menuBtn");
         const mobileNav = document.getElementById("mobileNav");
         const mobileLinks = mobileNav.querySelectorAll("a");
